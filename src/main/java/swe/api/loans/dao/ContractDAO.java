@@ -14,11 +14,11 @@ public class ContractDAO {
 
     static {
 
-        list.getContractList().add(new Contract(0, "s12345", "leasing", 5000));
-        list.getContractList().add(new Contract(0, "s12345", "credit", 300));
-        list.getContractList().add(new Contract(1, "s54321", "mortgage", 100000));
-        list.getContractList().add(new Contract(2, "s54321", "leasing", 3000));
-        list.getContractList().add(new Contract(2, "s54321", "leasing", 4000));
+        list.getContractList().add(new Contract(1, 0, "s12345", "leasing", 5000));
+        list.getContractList().add(new Contract(2, 0, "s12345", "credit", 300));
+        list.getContractList().add(new Contract(3, 1, "s54321", "mortgage", 100000));
+        list.getContractList().add(new Contract(4, 2, "s54321", "leasing", 3000));
+        list.getContractList().add(new Contract(5, 2, "s54321", "leasing", 4000));
     }
 
 

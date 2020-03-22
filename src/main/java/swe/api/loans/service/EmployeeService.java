@@ -49,15 +49,13 @@ public class EmployeeService {
     }
 
     public Employee getEmployeeBySid(String sid) {
-        List<Employee> employeeList = employeeDao.getAllEmployees().getEmployeeList();
-        Employee employee = new Employee();
+        List<Employee> employeeList = getAllEmployees().getEmployeeList();
+        List<Employee> employeeOutList = new ArrayList<>();
         for (Employee emp:employeeList) {
-            if (emp.getSid() == sid) {
-                employee = emp;
-            }
+            if (emp.getSid() == sid) employeeOutList.add(emp);
 
         }
-        return employee;
+        return employeeOutList.size()>0?employeeOutList.get(0):null;
 
 
     }

@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import swe.api.loans.domain.Client;
 import swe.api.loans.domain.Employee;
 import swe.api.loans.domain.Employees;
-import swe.api.loans.error.EmployeeNotFoundException;
 import swe.api.loans.service.EmployeeService;
 
 import java.net.URI;
@@ -30,7 +28,7 @@ public class EmployeeController {
         return employeeService.getAllEmployees();
     }
 
-    @GetMapping(path="/{id}", produces = "application/json")
+    @GetMapping(path="/{sid}", produces = "application/json")
     public Employee getEmployee(String sid) {
         return employeeService.getEmployeeBySid(sid);
     }

@@ -2,13 +2,14 @@ package swe.api.loans.domain;
 
 public class Contract {
 
+    int id;
+
     int clientId;
     String preparedBy;
     String approver;
     String loanType;
     int amount;
     State state;
-
 
     public Contract() {
 
@@ -18,6 +19,14 @@ public class Contract {
         IN_QUEUE,
         APRROVED,
         REJECTED;
+
+    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getClientId() {
@@ -73,7 +82,8 @@ public class Contract {
         this.state = state;
     }
 
-    public Contract(int clientId, String preparedBy, String loanType, int amount) {
+    public Contract(int id, int clientId, String preparedBy, String loanType, int amount) {
+        this.id = id;
         this.clientId = clientId;
         this.preparedBy = preparedBy;
         this.amount = amount;
