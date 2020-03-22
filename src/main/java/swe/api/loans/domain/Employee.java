@@ -14,6 +14,8 @@ public class Employee {
         this.isLoanApprover = isLoanApprover;
     }
 
+    public Employee() {
+    }
 
     public boolean isLoanApprover() {
         return isLoanApprover;

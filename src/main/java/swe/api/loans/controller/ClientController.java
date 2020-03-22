@@ -18,20 +18,23 @@ import java.net.URI;
 @RequestMapping("/clients")
 public class ClientController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger("HTTP-Client");
+    private static final Logger logger = LoggerFactory.getLogger(ClientController.class);
 
     @Autowired
     ClientService clientService;
 
     @GetMapping(path="/", produces = "application/json")
-    public Clients getClients()
-    {
+    public Clients getClients() {
         return clientService.getAllClients();
     }
 
+    @GetMapping(path="/{id}", produces = "application/json")
+    public Client getClient(int id) {
+        return clientService.getClient(id);
+    }
+
     @PostMapping(path= "/", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Object> addClient(@RequestBody Client client)
-    {
+    public ResponseEntity<Object> addClient(@RequestBody Client client) {
         client.setId(clientService.getNextId());
         client.setCustomerId(clientService.generateCustomerId());
         clientService.save(client);

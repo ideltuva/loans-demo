@@ -1,8 +1,11 @@
 package swe.api.loans.service;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import swe.api.loans.controller.ClientController;
 import swe.api.loans.dao.ClientDAO;
 import swe.api.loans.domain.Client;
 import swe.api.loans.domain.Clients;
@@ -11,6 +14,8 @@ import java.util.List;
 
 @Service
 public class ClientService {
+
+    private static final Logger logger = LoggerFactory.getLogger(ClientService.class);
 
     @Autowired
     ClientDAO clientDao;
@@ -68,6 +73,9 @@ public class ClientService {
         return clientDao.getAllClients();
     }
 
+    public Client getClient(int id) {
+        return clientDao.getClient(id);
+    }
 
 
 
