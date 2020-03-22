@@ -53,6 +53,17 @@ public class ContractService {
 
         return approverContracts.size()>0?approverContracts.get(0):null;
 
+    }
+
+    public List<Contract> getAllApprovedContracts() {
+        List<Contract> contracts = getAllContracts().getContractList();
+        List<Contract> approvedContracts = new ArrayList<>();
+        for (Contract contract:contracts) {
+            if (contract.getState()==Contract.State.APRROVED) approvedContracts.add(contract);
+        }
+
+        return approvedContracts;
+
 
     }
 

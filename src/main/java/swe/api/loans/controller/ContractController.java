@@ -70,14 +70,10 @@ public class ContractController {
     }
 
 
-
-
-
-
-
-
-
-
+    @GetMapping(path= "/approved", consumes = "application/json", produces = "application/json")
+    public List<Contract> findAllApprovedContracts() {
+        return contractService.getAllApprovedContracts();
+    }
 
 
 }
