@@ -2,40 +2,30 @@ package swe.api.loans.domain;
 
 public class Contract {
 
-    String customerId;
-    String queryId;
+    int clientId;
     String preparedBy;
     String approver;
     String loanType;
     int amount;
+    State state;
 
-    public Contract(Query query, String preparedBy) {
-        this.customerId = query.getCustomerId();
-        this.preparedBy = preparedBy;
-        this.amount = query.getAmount();
-        this.loanType = query.getLoanType();
-        this.queryId = query.getQueryId();
-    }
 
     public Contract() {
 
     }
 
-    public String getCustomerId() {
-        return customerId;
+    public enum State {
+        IN_QUEUE,
+        APRROVED,
+        REJECTED;
     }
 
-    public Contract setCustomerId(String customerId) {
-        this.customerId = customerId;
-        return this;
+    public int getClientId() {
+        return clientId;
     }
 
-    public String getQueryId() {
-        return queryId;
-    }
-
-    public Contract setQueryId(String queryId) {
-        this.queryId = queryId;
+    public Contract setClientId(int clientId) {
+        this.clientId = clientId;
         return this;
     }
 
@@ -73,6 +63,22 @@ public class Contract {
     public Contract setAmount(int amount) {
         this.amount = amount;
         return this;
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
+    }
+
+    public Contract(int clientId, String preparedBy, String loanType, int amount) {
+        this.clientId = clientId;
+        this.preparedBy = preparedBy;
+        this.amount = amount;
+        this.loanType = loanType;
+        this.state = State.IN_QUEUE;
     }
 
 }

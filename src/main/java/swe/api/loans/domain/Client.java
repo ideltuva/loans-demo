@@ -1,13 +1,18 @@
 package swe.api.loans.domain;
 
+public class Client {
 
-public class Customer {
-
+    int id;
     String firstName;
     String lastName;
     String customerId;
 
-    public Customer(String firstName, String lastName, String customerId) {
+    public Client() {
+
+    }
+
+    public Client(int id, String firstName, String lastName, String customerId) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.customerId = customerId;
@@ -37,7 +42,17 @@ public class Customer {
         this.customerId = customerId;
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    @Override
+    public String toString() {
+        return "Client " + "[firstname=" + firstName + ", lastName=" + lastName + ", custommerId=" + customerId + ", id=" + id + "]";
+    }
 
 }
