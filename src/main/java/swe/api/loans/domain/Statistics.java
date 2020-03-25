@@ -3,10 +3,10 @@ package swe.api.loans.domain;
 public class Statistics {
 
     int contractCount;
-    int loanSum;
-    int avgLoanSum;
-    int maxLoanSum;
-    int minLonadSum;
+    double loanSum;
+    double avgLoanSum;
+    double maxLoanSum;
+    double minLonadSum;
 
     public int getContractCount() {
         return contractCount;
@@ -16,39 +16,39 @@ public class Statistics {
         this.contractCount = contractCount;
     }
 
-    public int getLoanSum() {
+    public double getLoanSum() {
         return loanSum;
     }
 
-    public void setLoanSum(int loanSum) {
+    public void setLoanSum(double loanSum) {
         this.loanSum = loanSum;
     }
 
-    public int getAvgLoanSum() {
+    public double getAvgLoanSum() {
         return avgLoanSum;
     }
 
-    public void setAvgLoanSum(int avgLoanSum) {
+    public void setAvgLoanSum(double avgLoanSum) {
         this.avgLoanSum = avgLoanSum;
     }
 
-    public int getMaxLoanSum() {
+    public double getMaxLoanSum() {
         return maxLoanSum;
     }
 
-    public void setMaxLoanSum(int maxLoanSum) {
+    public void setMaxLoanSum(double maxLoanSum) {
         this.maxLoanSum = maxLoanSum;
     }
 
-    public int getMinLonadSum() {
+    public double getMinLonadSum() {
         return minLonadSum;
     }
 
-    public void setMinLonadSum(int minLonadSum) {
+    public void setMinLonadSum(double minLonadSum) {
         this.minLonadSum = minLonadSum;
     }
 
-    public Statistics(int contractCount, int loanSum, int avgLoanSum, int maxLoanSum, int minLonadSum) {
+    public Statistics(int contractCount, double loanSum, double avgLoanSum, double maxLoanSum, double minLonadSum) {
         this.contractCount = contractCount;
         this.loanSum = loanSum;
         this.avgLoanSum = avgLoanSum;

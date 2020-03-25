@@ -1,5 +1,9 @@
 package swe.api.loans.domain;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Contract {
 
     int id;
@@ -10,6 +14,9 @@ public class Contract {
     String loanType;
     int amount;
     State state;
+    Date created;
+    Date updated;
+
 
     public Contract() {
 
@@ -21,6 +28,9 @@ public class Contract {
         REJECTED;
 
     }
+
+    SimpleDateFormat changeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSS");
+
     public int getId() {
         return id;
     }
@@ -82,13 +92,40 @@ public class Contract {
         this.state = state;
     }
 
-    public Contract(int id, int clientId, String preparedBy, String loanType, int amount) {
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) throws ParseException {
+        this.created = changeFormat.parse(created);
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Date getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(String updated) throws ParseException {
+        this.updated = changeFormat.parse(updated);
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
+    }
+
+
+    public Contract(int id, int clientId, String preparedBy, String loanType, int amount, String created, String updated) throws ParseException {
         this.id = id;
         this.clientId = clientId;
         this.preparedBy = preparedBy;
         this.amount = amount;
         this.loanType = loanType;
         this.state = State.IN_QUEUE;
+        this.created = changeFormat.parse(created);
+        this.updated = changeFormat.parse(updated);
     }
 
 }

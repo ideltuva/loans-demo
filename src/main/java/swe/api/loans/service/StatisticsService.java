@@ -16,22 +16,22 @@ public class StatisticsService {
     @Autowired
     ContractService contractService;
 
-    public Statistics getAllStatistics() {
-        List<Contract> contracts = contractService.getAllApprovedContracts();
+    public Statistics getAllStatistics(int secondPeriod) {
+        List<Contract> contracts = contractService.getAllApprovedContractsInPeriod(secondPeriod);
         List<Integer> amounts = new ArrayList<>();
         for (Contract contract:contracts) amounts.add(contract.getAmount());
 
-        int sum = sum(amounts);
+        double sum = sum(amounts);
         int count = contracts.size();
-        int avg = 0;
+        double avg = 0.0;
         if (count!= 0) avg = sum/count;
-        int max = findMax(amounts);
-        int min = findMin(amounts);
+        double max = findMax(amounts);
+        double min = findMin(amounts);
         return new Statistics(count, sum, avg, max, min);
     }
 
 
-    public static Integer findMin(List<Integer> list) {
+    public static double findMin(List<Integer> list) {
         if (list == null || list.size() == 0) {
             return Integer.MAX_VALUE;
         }
@@ -49,7 +49,7 @@ public class StatisticsService {
         return sortedlist.get(sortedlist.size() - 1);
     }
 
-    public static Integer sum(List<Integer> list) {
+    public static double sum(List<Integer> list) {
         if (list == null || list.size() == 0) {
             return 0;
         }

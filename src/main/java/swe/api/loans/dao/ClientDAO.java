@@ -27,7 +27,7 @@ public class ClientDAO {
     }
 
     public Client getClient(int id) {
-        return list.getClientList().get(id);
+        return list.getClientList().get(id-1);
     }
 
 

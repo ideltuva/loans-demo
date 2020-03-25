@@ -28,8 +28,8 @@ public class ClientController {
         return clientService.getAllClients();
     }
 
-    @GetMapping(path="/{id}", produces = "application/json")
-    public Client getClient(int id) {
+    @GetMapping(value="/{id}", produces = "application/json")
+    public Client getClient(@PathVariable int id) {
         return clientService.getClient(id);
     }
 

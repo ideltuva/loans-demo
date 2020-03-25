@@ -3,15 +3,16 @@ package swe.api.loans.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import swe.api.loans.dao.ContractDAO;
-import swe.api.loans.domain.Client;
-import swe.api.loans.domain.Clients;
 import swe.api.loans.domain.Contract;
 import swe.api.loans.domain.Contracts;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+@Service
 public class ContractService {
 
     private static final Logger logger = LoggerFactory.getLogger(ContractService.class);
@@ -63,8 +64,18 @@ public class ContractService {
         }
 
         return approvedContracts;
+    }
 
+    public List<Contract> getAllApprovedContractsInPeriod(int periodTimeInSeconds) {
+        List<Contract> contracts = getAllContracts().getContractList();
+        List<Contract> approvedContracts = new ArrayList<>();
+        Date date = new Date();
+        date.setTime(date.getTime() - periodTimeInSeconds * 1000);
+        for (Contract contract:contracts) {
+            if (contract.getState()==Contract.State.APRROVED && (contract.getUpdated().compareTo(date) >= 0)) approvedContracts.add(contract);
+        }
 
+        return approvedContracts;
     }
 
 

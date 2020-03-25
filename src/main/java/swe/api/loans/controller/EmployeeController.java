@@ -28,7 +28,7 @@ public class EmployeeController {
         return employeeService.getAllEmployees();
     }
 
-    @GetMapping(path="/{sid}", produces = "application/json")
+    @GetMapping(value="/{sid}", produces = "application/json")
     public Employee getEmployee(String sid) {
         return employeeService.getEmployeeBySid(sid);
     }
