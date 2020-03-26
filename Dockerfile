@@ -1,5 +1,5 @@
 
-# Then, build the image with:
+# Build the image with:
 #
 # docker build -f Dockerfile -t app .
 #
