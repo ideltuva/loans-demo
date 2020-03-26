@@ -56,6 +56,10 @@ public class Statistics {
         this.minLonadSum = minLonadSum;
     }
 
+    public Statistics() {
+
+    }
+
     @Override
     public String toString() {
         return "Statistics: [contractCount=" + contractCount + ", loanSum= " + loanSum +

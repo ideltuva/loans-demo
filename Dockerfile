@@ -2,6 +2,11 @@
 # Then, build the image with:
 #
 # docker build -f Dockerfile -t app .
+#
+# Run the docker image:
+#
+# docker run -p 8080:8080 -t app
+
 
 FROM gradle:jdk-alpine AS build
 COPY --chown=gradle:gradle . /Users/ideltuva/workspace/loans/

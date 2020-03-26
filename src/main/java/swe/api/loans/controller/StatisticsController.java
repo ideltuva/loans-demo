@@ -4,10 +4,8 @@ package swe.api.loans.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.util.StringUtils;
 import swe.api.loans.domain.Statistics;
 import swe.api.loans.service.StatisticsService;
 
@@ -20,8 +18,9 @@ public class StatisticsController {
 
     private static Logger log = LoggerFactory.getLogger(StatisticsController.class);
 
-    @GetMapping(path= "/", consumes = "application/json", produces = "application/json")
-    public Statistics getStatisticsInSecondsPeriod(@RequestParam(defaultValue = "60") int seconds) {
+    @RequestMapping(produces = "application/json", method = RequestMethod.GET)
+    public Statistics getStatisticsInSecondsPeriod(@RequestParam(value="inSecondsPeriod", defaultValue="60") String inSecondsPeriod) {
+        int seconds = Integer.parseInt(inSecondsPeriod);
         return statisticsService.getAllStatistics(seconds);
     }
 
